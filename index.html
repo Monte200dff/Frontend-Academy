@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Academy | Master Modern Web Development</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-circle"></div>
+            <p>Loading Frontend Academy...</p>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container">
+            <p><span class="badge">New</span> Master React 18 course now available! <a href="#courses" class="announcement-link">Enroll Today <i class="fas fa-arrow-right"></i></a></p>
+            <button class="announcement-close" aria-label="Close announcement">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Frontend<span class="logo-highlight">Academy</span></span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#courses" class="nav-link">Courses <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-column">
+                                    <h4>By Skill Level</h4>
+                                    <a href="#courses" class="dropdown-item"><i class="fas fa-star"></i> Beginner</a>
+                                    <a href="#courses" class="dropdown-item"><i class="fas fa-star-half-alt"></i> Intermediate</a>
+                                    <a href="#courses" class="dropdown-item"><i class="fas fa-star"></i><i class="fas fa-star"></i> Advanced</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>By Category</h4>
+                                    <a href="#courses" class="dropdown-item"><i class="fab fa-html5"></i> HTML/CSS</a>
+                                    <a href="#courses" class="dropdown-item"><i class="fab fa-js"></i> JavaScript</a>
+                                    <a href="#courses" class="dropdown-item"><i class="fab fa-react"></i> React</a>
+                                    <a href="#courses" class="dropdown-item"><i class="fab fa-vuejs"></i> Vue.js</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Popular Courses</h4>
+                                    <a href="#course-detail" class="dropdown-item featured"><i class="fas fa-fire"></i> Master React 18</a>
+                                    <a href="#course-detail" class="dropdown-item featured"><i class="fas fa-bolt"></i> JavaScript Pro</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#teachers" class="nav-link">Instructors</a></li>
+                    <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#about" class="nav-link">About <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#about" class="dropdown-item"><i class="fas fa-info-circle"></i> About Us</a>
+                            <a href="#contact" class="dropdown-item"><i class="fas fa-envelope"></i> Contact</a>
+                            <a href="#faq" class="dropdown-item"><i class="fas fa-question-circle"></i> FAQ</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="btn-search" aria-label="Open search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="#login" class="btn btn-outline btn-small" id="loginBtn">Login</a>
+                    <a href="#register" class="btn btn-primary btn-small" id="registerBtn">Sign Up</a>
+                </div>
+
+                <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="container">
+            <div class="search-container">
+                <button class="search-close" aria-label="Close search">&times;</button>
+                <h2>What would you like to learn today?</h2>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search courses, tutorials, instructors..." aria-label="Search courses">
+                    <button class="btn btn-primary search-btn">Search <i class="fas fa-search"></i></button>
+                </div>
+                <div class="search-suggestions">
+                    <span class="search-tag">JavaScript</span>
+                    <span class="search-tag">React</span>
+                    <span class="search-tag">CSS Grid</span>
+                    <span class="search-tag">TypeScript</span>
+                    <span class="search-tag">Web Performance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Become a <span class="text-gradient">Frontend Master</span> in 2024</h1>
+                        <p class="hero-subtitle">Join 50,000+ developers learning modern web development with our project-based courses and expert instructors.</p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">200+</span>
+                                <span class="stat-label">Courses</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50K+</span>
+                                <span class="stat-label">Students</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Satisfaction</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#courses" class="btn btn-primary btn-large">Explore Courses <i class="fas fa-arrow-right"></i></a>
+                            <a href="#about" class="btn btn-outline btn-large">Learn More</a>
+                        </div>
+                        <div class="hero-badges">
+                            <span class="badge"><i class="fas fa-clock"></i> Self-paced learning</span>
+                            <span class="badge"><i class="fas fa-certificate"></i> Certificates</span>
+                            <span class="badge"><i class="fas fa-hands-helping"></i> Mentorship</span>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="image-container">
+                            <div class="floating-card card-1">
+                                <div class="floating-card-header">
+                                    <i class="fab fa-react"></i>
+                                    <span>React Course</span>
+                                </div>
+                                <div class="floating-card-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span>85% Complete</span>
+                                </div>
+                            </div>
+                            <div class="floating-card card-2">
+                                <div class="floating-card-header">
+                                    <i class="fab fa-js"></i>
+                                    <span>JS Mastery</span>
+                                </div>
+                                <div class="floating-card-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 65%"></div>
+                                    </div>
+                                    <span>65% Complete</span>
+                                </div>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="fas fa-medal"></i>
+                                <span>Achievement Unlocked!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Learn With Us?</h2>
+                    <p class="section-subtitle">We provide everything you need to go from beginner to job-ready frontend developer.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Project-Based Learning</h3>
+                        <p>Build real-world projects that you can add to your portfolio and show to employers.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Expert Instructors</h3>
+                        <p>Learn from industry professionals working at top tech companies like Google, Meta, and Netflix.</p>
+                        <a href="#" class="feature-link">Meet instructors <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Community Support</h3>
+                        <p>Join our active Discord community with 20,000+ developers for help, feedback, and networking.</p>
+                        <a href="#" class="feature-link">Join community <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Career Services</h3>
+                        <p>Get resume reviews, mock interviews, and job placement assistance upon course completion.</p>
+                        <a href="#" class="feature-link">Career support <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="courses" id="courses">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Courses</h2>
+                    <p class="section-subtitle">Hand-picked selection of our most popular and impactful courses.</p>
+                </div>
+                
+                <div class="courses-controls">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All Courses</button>
+                        <button class="filter-tab" data-filter="beginner">Beginner</button>
+                        <button class="filter-tab" data-filter="intermediate">Intermediate</button>
+                        <button class="filter-tab" data-filter="advanced">Advanced</button>
+                    </div>
+                    <div class="sort-controls">
+                        <select class="sort-select" aria-label="Sort courses">
+                            <option value="popular">Most Popular</option>
+                            <option value="newest">Newest</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="courses-grid" id="coursesGrid">
+                    <!-- Course cards will be populated by JavaScript -->
+                </div>
+                
+                <div class="section-footer">
+                    <a href="#all-courses" class="btn btn-outline">View All Courses <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Detail Modal -->
+        <div class="modal" id="courseModal">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-body" id="courseModalContent">
+                    <!-- Course detail content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Teachers Section -->
+        <section class="teachers" id="teachers">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Meet Our Instructors</h2>
+                    <p class="section-subtitle">Learn from industry experts with years of real-world experience.</p>
+                </div>
+                <div class="teachers-slider">
+                    <div class="slider-container" id="teachersSlider">
+                        <!-- Teacher cards will be populated by JavaScript -->
+                    </div>
+                    <button class="slider-btn slider-prev" aria-label="Previous slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn slider-next" aria-label="Next slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="slider-dots">
+                        <!-- Dots will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Student Success Stories</h2>
+                    <p class="section-subtitle">See how our students transformed their careers.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Frontend Academy completely changed my career trajectory. I went from a retail job to a frontend developer at a tech startup in 6 months!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Chen" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sarah Chen</h4>
+                                <p>Frontend Developer at TechStart Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"The project-based approach helped me build a portfolio that actually impressed employers. I landed 3 job offers after completing the React course."</p>
+                        <div class="testimonial-author">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus" alt="Marcus Johnson" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Marcus Johnson</h4>
+                                <p>Software Engineer at DigitalFlow</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"As a self-taught developer, I was missing structure. Frontend Academy provided that with excellent curriculum and mentor support."</p>
+                        <div class="testimonial-author">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" alt="Priya Patel" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Priya Patel</h4>
+                                <p>UI Developer at CreativeMinds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog" id="blog">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">From Our Blog</h2>
+                    <p class="section-subtitle">Latest articles, tutorials, and industry insights.</p>
+                </div>
+                <div class="blog-grid" id="blogGrid">
+                    <!-- Blog posts will be populated by JavaScript -->
+                </div>
+                <div class="section-footer">
+                    <a href="#all-blog" class="btn btn-outline">View All Articles <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Get answers to common questions about our academy.</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                            <span>Do I need any prior experience to start?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer" id="faq1">
+                            <p>No prior experience is required for our beginner courses. We start from the absolute basics and gradually build up to advanced concepts. Our learning path is designed to take you from zero to job-ready.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                            <span>How long does it take to complete a course?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer" id="faq2">
+                            <p>Course duration varies. Beginner courses typically take 4-8 weeks if you study 10-15 hours per week. Advanced courses may take 8-12 weeks. All courses are self-paced, so you can complete them faster or slower based on your schedule.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                            <span>Do you offer certificates?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer" id="faq3">
+                            <p>Yes! All courses include a certificate of completion that you can share on LinkedIn or include in your resume. We also offer specialized certifications for career paths like "Frontend Developer" and "React Specialist".</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+                            <span>What if I need help during the course?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer" id="faq4">
+                            <p>We provide multiple support channels: course discussion forums, weekly live Q&A sessions with instructors, and access to our Discord community where you can ask questions and get help from peers and mentors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-card">
+                    <div class="newsletter-content">
+                        <h2>Stay Updated with Frontend Trends</h2>
+                        <p>Subscribe to our newsletter and get weekly tutorials, industry news, and exclusive course discounts.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="Your email address" aria-label="Email address" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                            <div class="form-message" id="newsletterMessage"></div>
+                            <p class="form-note">By subscribing, you agree to our Privacy Policy. You can unsubscribe at any time.</p>
+                        </form>
+                    </div>
+                    <div class="newsletter-image">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Frontend Academy</h2>
+                    <p class="section-subtitle">Our mission is to make quality frontend education accessible to everyone.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Founded in 2020, Frontend Academy has grown to become one of the most trusted platforms for learning modern web development. We've helped over 50,000 students worldwide launch or advance their careers in tech.</p>
+                        <p>Our approach combines project-based learning with industry-relevant curriculum, taught by experienced developers from top tech companies. We focus not just on teaching syntax, but on developing problem-solving skills and best practices.</p>
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <span class="about-stat-number">50,000+</span>
+                                <span class="about-stat-label">Students Worldwide</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="about-stat-number">200+</span>
+                                <span class="about-stat-label">Courses & Tutorials</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="about-stat-number">40+</span>
+                                <span class="about-stat-label">Expert Instructors</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="about-stat-number">98%</span>
+                                <span class="about-stat-label">Student Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="about-image-container">
+                            <div class="about-highlight">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Job-Ready Graduates</h4>
+                                    <p>85% of our graduates land tech jobs within 6 months</p>
+                                </div>
+                            </div>
+                            <div class="about-highlight">
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <h4>Industry Partnerships</h4>
+                                    <p>Partnered with 50+ companies for hiring</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Have questions? We're here to help you on your learning journey.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Us</h3>
+                            <p>support@frontendacademy.com</p>
+                            <p>We typically reply within 24 hours</p>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Live Chat</h3>
+                            <p>Available Mon-Fri, 9am-6pm EST</p>
+                            <p>Click the chat icon in the bottom right</p>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Call Us</h3>
+                            <p>+1 (555) 123-4567</p>
+                            <p>Available for urgent inquiries</p>
+                        </div>
+                        <div class="contact-social">
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Full Name *</label>
+                                    <input type="text" id="contactName" class="form-input" required>
+                                    <div class="form-error" id="nameError"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <input type="email" id="contactEmail" class="form-input" required>
+                                    <div class="form-error" id="emailError"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <input type="text" id="contactSubject" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message *</label>
+                                <textarea id="contactMessage" class="form-textarea" rows="5" required></textarea>
+                                <div class="form-error" id="messageError"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                            </div>
+                            <div class="form-message" id="contactMessageStatus"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview (Modal) -->
+        <div class="modal" id="dashboardModal">
+            <div class="modal-content modal-lg">
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-header">
+                    <h2>Student Dashboard</h2>
+                    <p>Welcome back, Alex! Here's your learning progress.</p>
+                </div>
+                <div class="modal-body">
+                    <div class="dashboard-tabs">
+                        <button class="dashboard-tab active" data-tab="progress">My Progress</button>
+                        <button class="dashboard-tab" data-tab="courses">My Courses</button>
+                        <button class="dashboard-tab" data-tab="profile">Profile</button>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-panel active" id="progressPanel">
+                            <h3>Learning Progress</h3>
+                            <div class="progress-stats">
+                                <div class="progress-stat">
+                                    <div class="progress-circle" data-percent="85">
+                                        <span>85%</span>
+                                    </div>
+                                    <p>React Mastery</p>
+                                </div>
+                                <div class="progress-stat">
+                                    <div class="progress-circle" data-percent="65">
+                                        <span>65%</span>
+                                    </div>
+                                    <p>JavaScript Pro</p>
+                                </div>
+                                <div class="progress-stat">
+                                    <div class="progress-circle" data-percent="30">
+                                        <span>30%</span>
+                                    </div>
+                                    <p>Advanced CSS</p>
+                                </div>
+                            </div>
+                            <div class="progress-timeline">
+                                <h4>Recent Activity</h4>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Today, 10:30 AM</div>
+                                    <div class="timeline-content">Completed "React Hooks Deep Dive" lesson</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Yesterday, 3:15 PM</div>
+                                    <div class="timeline-content">Submitted Project 3: E-commerce Dashboard</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 12, 2024</div>
+                                    <div class="timeline-content">Earned "CSS Grid Master" badge</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-panel" id="coursesPanel">
+                            <h3>My Courses</h3>
+                            <div class="dashboard-courses">
+                                <!-- Courses will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="dashboard-panel" id="profilePanel">
+                            <h3>Profile Settings</h3>
+                            <form class="profile-form">
+                                <div class="form-group">
+                                    <label for="profileName">Full Name</label>
+                                    <input type="text" id="profileName" class="form-input" value="Alex Johnson">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileEmail">Email</label>
+                                    <input type="email" id="profileEmail" class="form-input" value="alex@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileBio">Bio</label>
+                                    <textarea id="profileBio" class="form-textarea" rows="3">Frontend developer passionate about React and UX design.</textarea>
+                                </div>
+                                <button type="button" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div class="modal" id="loginModal">
+            <div class="modal-content modal-sm">
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-body">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access your courses and dashboard.</p>
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" class="form-input" required>
+                            <div class="form-error" id="loginEmailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" class="form-input" required>
+                            <div class="form-error" id="loginPasswordError"></div>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rememberMe">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#forgot-password" class="text-link">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </form>
+                    <div class="auth-divider">
+                        <span>Or continue with</span>
+                    </div>
+                    <div class="auth-social">
+                        <button class="btn btn-outline btn-social">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button class="btn btn-outline btn-social">
+                            <i class="fab fa-github"></i> GitHub
+                        </button>
+                    </div>
+                    <p class="auth-switch">
+                        Don't have an account? <a href="#register" class="text-link" id="switchToRegister">Sign up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div class="modal" id="registerModal">
+            <div class="modal-content modal-sm">
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-body">
+                    <h2>Join Frontend Academy</h2>
+                    <p>Create your free account to start learning.</p>
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" class="form-input" required>
+                            <div class="form-error" id="registerNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" class="form-input" required>
+                            <div class="form-error" id="registerEmailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" class="form-input" required>
+                            <div class="form-error" id="registerPasswordError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirm">Confirm Password</label>
+                            <input type="password" id="registerConfirm" class="form-input" required>
+                            <div class="form-error" id="registerConfirmError"></div>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="termsAgreement" required>
+                                <span>I agree to the <a href="#terms" class="text-link">Terms of Service</a> and <a href="#privacy" class="text-link">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </form>
+                    <div class="auth-divider">
+                        <span>Or continue with</span>
+                    </div>
+                    <div class="auth-social">
+                        <button class="btn btn-outline btn-social">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button class="btn btn-outline btn-social">
+                            <i class="fab fa-github"></i> GitHub
+                        </button>
+                    </div>
+                    <p class="auth-switch">
+                        Already have an account? <a href="#login" class="text-link" id="switchToLogin">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>Frontend<span class="logo-highlight">Academy</span></span>
+                    </a>
+                    <p>Master modern web development with project-based courses, expert instructors, and a supportive community.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Courses</h3>
+                    <ul class="footer-links">
+                        <li><a href="#courses">All Courses</a></li>
+                        <li><a href="#courses">Beginner Path</a></li>
+                        <li><a href="#courses">Intermediate Path</a></li>
+                        <li><a href="#courses">Advanced Path</a></li>
+                        <li><a href="#courses">New Releases</a></li>
+                        <li><a href="#courses">Free Courses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#affiliates">Affiliate Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                        <li><a href="#accessibility">Accessibility</a></li>
+                        <li><a href="#refund">Refund Policy</a></li>
+                        <li><a href="#sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Get the latest course updates and frontend insights.</p>
+                    <form class="footer-newsletter-form">
+                        <input type="email" class="footer-input" placeholder="Your email" aria-label="Email for newsletter">
+                        <button type="submit" class="btn btn-primary btn-small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Frontend Academy. All rights reserved.</p>
+                <div class="footer-payment">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-amex" title="American Express"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <button class="chat-widget" aria-label="Open chat">
+        <i class="fas fa-comments"></i>
+        <span class="chat-notification">3</span>
+    </button>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <div class="toast-message">Course added to cart successfully!</div>
+        </div>
+        <button class="toast-close" aria-label="Close notification">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
